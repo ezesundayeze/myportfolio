@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eze Sunday: Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: an engineer's record, quiet and exact.
+   IDEA: the contents page of a collected-works volume, with a career index in front.
+   PICTURE: one career chart. Roles as bars across 2019 to today, articles as dots below them.
+   COLOUR and TYPE: Night desk. Plum-black ground, white, rose accent, dusk support. Inter Tight 300 + Inter.
+   LAYOUT: name and claim over the full-width chart, then experience, writing, recognition, skills, contact. */
+:root{color-scheme:dark;--bg:#1a0f1f;--bg2:#241629;--ink:#ffffff;--mute:#b9aec4;--line:#3a2a42;--rose:#ff8fa3;--dusk:#8f7aa8;--lime:#e9d8ff}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+html{scroll-padding-top:72px}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;text-wrap:balance;margin:0}
+h1{font-weight:300;font-size:clamp(40px,7vw,84px);line-height:1.02;letter-spacing:-.02em}
+h2{font-weight:500;font-size:clamp(26px,3.2vw,36px);line-height:1.1}
+h3{font-weight:500;font-size:19px;line-height:1.3}
+.role{color:var(--rose);font-size:clamp(17px,1.6vw,20px);margin:10px 0 0}
+.lede{font-size:clamp(17px,1.6vw,20px);color:var(--mute);max-width:64ch;margin:14px 0 0}
+.lede b{color:var(--ink);font-weight:500}
+nav.top{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px}
+nav.top a{text-decoration:none;color:var(--mute);border-bottom:1px solid var(--line);padding:6px 0;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover,nav.top a:focus-visible{color:var(--rose);border-color:var(--rose)}
+.fig{position:relative;height:clamp(380px,44vw,480px);margin-top:32px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:14px;color:var(--mute)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.note{font-size:13px;color:var(--dusk);margin-top:6px}
+.sec{border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 48px}
+.sec-head>div>p{color:var(--mute);margin:10px 0 0;max-width:46ch}
+.list{list-style:none;margin:0;padding:0}
+.list li{border-bottom:1px solid var(--line)}
+.list li:first-child{border-top:1px solid var(--line)}
+.list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding:18px 4px;text-decoration:none}
+.list a:hover h3,.list a:focus-visible h3{color:var(--rose)}
+.list a:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.list .meta{color:var(--mute);font-size:14px;white-space:nowrap;text-align:right}
+.list p{grid-column:1/-1;margin:2px 0 0;color:var(--mute);font-size:15px;max-width:70ch}
+.jobs{list-style:none;margin:0;padding:0}
+.job{display:grid;grid-template-columns:11em minmax(0,1fr);gap:4px 28px;padding:22px 0;border-bottom:1px solid var(--line)}
+.job:first-child{border-top:1px solid var(--line)}
+.job .when{color:var(--mute);font-size:14px;padding-top:3px}
+.job .when span{display:block;color:var(--dusk)}
+.job .org{color:var(--rose)}
+.job ul{margin:10px 0 0;padding-left:1.1em;color:var(--mute)}
+.job li{margin:6px 0;max-width:68ch}
+.job li::marker{color:var(--dusk)}
+.projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.proj{background:var(--bg2);border-radius:16px;padding:clamp(22px,3vw,36px);display:flex;flex-direction:column}
+.ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px}
+.ph h3{font-size:clamp(24px,2.6vw,30px);font-weight:500}
+.ph a{color:var(--rose);text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.proj .what{color:var(--ink);font-size:17px;margin:6px 0 18px;max-width:52ch}
+.nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-block:1px solid var(--line);padding:14px 0;margin-bottom:6px}
+.nums b{display:block;font-family:"Inter Tight",Inter,system-ui,sans-serif;font-weight:300;font-size:clamp(28px,3.4vw,38px);line-height:1.1;color:var(--lime)}
+.nums span{color:var(--mute);font-size:14px}
+.proj ul{margin:10px 0 0;padding-left:1.1em;color:var(--mute)}
+.proj li{margin:7px 0}
+.proj li::marker{color:var(--dusk)}
+.proj .fine{margin:auto 0 0;padding-top:16px;font-size:14px;color:var(--dusk)}
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.award{background:var(--bg2);border-radius:14px;padding:clamp(20px,3vw,32px)}
+.award .big{font-family:"Inter Tight",Inter,system-ui,sans-serif;font-weight:300;font-size:clamp(48px,7vw,76px);line-height:1;color:var(--rose)}
+.award h3{margin-top:14px}
+.award p{margin:8px 0 0;color:var(--mute)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px 40px}
+.grid3 h3{color:var(--mute);font-size:15px;font-weight:500;font-family:Inter,sans-serif;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:15px}
+.plain{list-style:none;margin:0;padding:0}
+.plain li{padding:8px 0;border-bottom:1px solid var(--line)}
+.plain li span{display:block;color:var(--mute);font-size:14px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 14px}
+.chip{font:inherit;font-size:15px;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer}
+.chip[aria-pressed=true]{color:var(--bg);background:var(--lime);border-color:var(--lime)}
+.chip:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+input[type=search]{font:inherit;font-size:16px;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:0 14px;min-height:44px;flex:1 1 220px}
+input::placeholder{color:var(--dusk)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-weight:500;color:var(--mute);font-size:14px;padding:10px 8px;border-bottom:1px solid var(--line)}
+td{padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.d{white-space:nowrap;color:var(--mute);text-align:right}
+td a{text-decoration-color:var(--dusk);text-underline-offset:3px}
+td a:hover{color:var(--rose)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px}
+.empty{color:var(--mute);padding:18px 8px}
+.contact{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:18px}
+.contact a{min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px;text-decoration-color:var(--dusk)}
+.contact a:hover{color:var(--rose)}
+.mail{display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:clamp(18px,2vw,22px)}
+.copy{font:inherit;font-size:14px;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:8px;min-height:44px;padding:0 14px;cursor:pointer}
+@media(max-width:800px){.sec-head{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;color:var(--dusk)}.stack td:empty{display:none}.list a{grid-template-columns:minmax(0,1fr)}.list .meta{text-align:left}.job{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.pt{animation:pop .5s ease-out both}.bar{animation:grow .7s ease-out both;transform-origin:left}@keyframes pop{from{opacity:0;transform:translateY(8px)}}@keyframes grow{from{transform:scaleX(0)}}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band"><div class="wrap">
+  <h1>Eze Sunday Eze</h1>
+  <p class="role">Software engineer and technical writer</p>
+  <p class="lede">Since 2019 he has built software for fintech and healthtech, from a crypto payment gateway that handles over 2,000 transactions a day to clinical tools for doctors. Today he is a researcher and technical writer at <b>RareSkills</b>. He turns hard technical concepts into writing that engineers at every level can follow, and he grounds each explanation in how the system really works inside. He cares about clarity, and he checks every claim against real behaviour before it reaches a reader. That work placed him among the Document360 Top 50 technical writers for 2025–2026.</p>
+  <nav class="top" aria-label="Sections">
+    <a href="#experience">Experience</a>
+    <a href="#built">Things he has built</a>
+    <a href="#rareskills">Solana and Ethereum</a>
+    <a href="#rust">Rust</a>
+    <a href="#web">Web and JavaScript</a>
+    <a href="#recognition">Recognition</a>
+    <a href="#skills">Skills</a>
+    <a href="#archive">Full archive</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="fig" id="tl" role="img" aria-label="Career chart from 2019 to today. Roles are bars, articles are dots grouped by subject."><svg id="tls"></svg></div>
+  <div class="legend" id="legend"></div>
+  <p class="note">Bars are roles. Each dot is one dated article. RareSkills pages and Cyfrin glossary entries carry no publish date, so they appear in the lists below.</p>
+</div></header>
+
+<section class="band sec" id="experience"><div class="wrap sec-head">
+  <div>
+    <h2>Experience</h2>
+    <p>Crypto payments, developer education and health records, on remote and onsite teams since 2019.</p>
+  </div>
+  <ul class="jobs" id="jobs"></ul>
+</div></section>
+
+<section class="band sec" id="built"><div class="wrap">
+  <h2>Things he has built</h2>
+  <p class="lede" style="margin-bottom:24px">Products he designed, built and runs end to end.</p>
+  <div class="projs">
+    <article class="proj">
+      <div class="ph"><h3>The Investor Side</h3><a href="https://theinvestorside.com">theinvestorside.com</a></div>
+      <p class="what">Investing education and fund data for Nigerians, from first-time savers to people who want structured knowledge.</p>
+      <div class="nums"><div><b>200+</b><span>funds tracked</span></div><div><b>Hundreds</b><span>of investors onboarded through the courses</span></div></div>
+      <ul>
+        <li>Free courses on the Nigerian capital market, mutual funds, ETFs, compound interest, gold and startup investing.</li>
+        <li>Fund rankings by category: money market, equity, balanced, fixed income, dollar, ethical and Shariah-compliant, with a watchlist.</li>
+        <li>Calculators for savings, retirement, inflation and money market returns, plus an investment safety checker and a trading playground.</li>
+        <li>A glossary, quizzes and a live market page with key Nigerian rates.</li>
+      </ul>    </article>
+    <article class="proj">
+      <div class="ph"><h3>Omini Studio</h3><a href="https://oministudio.com">oministudio.com</a></div>
+      <p class="what">Turns a voice-over or a script into a finished explainer video, with no camera, editing or animation team needed.</p>
+      <div class="nums"><div><b>15 min</b><span>maximum video length</span></div><div><b>2</b><span>formats, widescreen and vertical</span></div></div>
+      <ul>
+        <li>Record narration in the browser, upload it, or generate a voice-over from a script.</li>
+        <li>Review a draft and ask for changes in plain language. Only the scene you flag is redone.</li>
+        <li>Nothing is published until the creator approves it, and the creator owns the finished video.</li>
+        <li>Built for educators who want to publish lessons as clean, animated explainers.</li>
+      </ul>
+      <p class="fine">Built at Injectflow Core, where he is founding engineer.</p>
+    </article>
+  </div>
+</div></section>
+
+<section class="band sec" id="rareskills"><div class="wrap sec-head">
+  <div>
+    <h2>Solana and Ethereum internals</h2>
+    <p>Tutorials for RareSkills on Solidity internals, Token-2022, oracles and sBPF assembly, plus Ethereum standards explained for Cyfrin. Each claim is tested against real protocol behaviour.</p>
+  </div>
+  <ul class="list" id="l-rs"></ul>
+</div></section>
+
+<section class="band sec" id="rust"><div class="wrap sec-head">
+  <div>
+    <h2>Rust deep dives</h2>
+    <p>From error handling and traits to formal verification. Most of these ran on the LogRocket blog between 2022 and 2024.</p>
+  </div>
+  <ul class="list" id="l-rust"></ul>
+</div></section>
+
+<section class="band sec" id="web"><div class="wrap sec-head">
+  <div>
+    <h2>Web, JavaScript and early Web3</h2>
+    <p>Node.js, frontend tooling, APIs, and the first pieces on sending bitcoin and choosing a smart contract language.</p>
+  </div>
+  <ul class="list" id="l-web"></ul>
+</div></section>
+
+<section class="band sec" id="recognition"><div class="wrap">
+  <h2 style="margin-bottom:20px">Recognition</h2>
+  <div class="awards">
+    <div class="award">
+      <div class="big">#29</div>
+      <h3>Document360 Global Writers Awards 2025–2026</h3>
+      <p>Named in the Top 50 technical writers worldwide. Winners were scored 70% on a judged portfolio and 30% on public votes.</p>
+      <p><a href="https://document360.com/events/global-writers-awards-2025/winners/">See the winners list</a></p>
+    </div>
+    <div class="award">
+      <div class="big">NEAR</div>
+      <h3>NEAR Certified Developer</h3>
+      <p>Certified by the NEAR Foundation in April 2022.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="band sec" id="skills"><div class="wrap">
+  <h2 style="margin-bottom:24px">Skills and background</h2>
+  <div class="grid3">
+    <div><h3>Languages and frameworks</h3><ul class="tags" id="sk-lang"></ul></div>
+    <div><h3>Blockchain</h3><ul class="tags" id="sk-chain"></ul></div>
+    <div><h3>Data and APIs</h3><ul class="tags" id="sk-data"></ul></div>
+    <div><h3>Writing and teaching</h3><ul class="tags" id="sk-write"></ul></div>
+    <div><h3>Education</h3><ul class="plain">
+      <li>Higher National Diploma, Computer Science<span>Institute of Management and Technology, Enugu · 2016–2018</span></li>
+      <li>National Diploma, Computer Science<span>Covenant Polytechnic, Aba · 2013–2015</span></li>
+    </ul></div>
+    <div><h3>Spoken languages</h3><ul class="tags"><li>English</li><li>Igbo</li></ul></div>
+  </div>
+</div></section>
+
+<section class="band sec" id="archive"><div class="wrap">
+  <h2>Full archive</h2>
+  <div class="tools">
+    <div id="chips" role="group" aria-label="Filter by subject" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+    <input type="search" id="q" placeholder="Search titles" aria-label="Search titles">
+  </div>
+  <table class="stack">
+    <thead><tr><th>Title</th><th>Subject</th><th>Venue</th><th style="text-align:right">Date</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="empty" id="empty" hidden>No articles match that search.</p>
+</div></section>
+
+<footer class="band sec" id="contact"><div class="wrap">
+  <h2>Get in touch</h2>
+  <div class="contact">
+    <span class="mail"><a href="mailto:mailstoeze@gmail.com">mailstoeze@gmail.com</a><button class="copy" id="copy" type="button">Copy email</button></span>
+  </div>
+  <div class="contact">
+    <a href="https://www.linkedin.com/in/ezesundayeze">LinkedIn</a>
+    <a href="https://github.com/ezesundayeze">GitHub</a>
+    <a href="https://ezesunday.medium.com/">Medium</a>
+    <a href="https://blog.logrocket.com/author/ezesunday/">LogRocket</a>
+    <a href="https://fusionauth.io/blog/author/eze-sunday-eze/">FusionAuth</a>
+  </div>
+</div></footer>
+
+<script>
+{
+const T={rust:['Rust','#ff8fa3'],js:['JavaScript and Node','#e9d8ff'],web3:['Blockchain','#ffd27a'],other:['Python, APIs and auth','#8f7aa8']};
+const LR='https://blog.logrocket.com/';
+const A=[
+ ['Understanding ABI encoding for function calls','https://rareskills.io/post/abi-encoding','web3','RareSkills','','How calldata is laid out, from function selectors through static, dynamic, nested and struct arguments, and what that costs in gas.'],
+ ['Try catch and all the ways Solidity can revert','https://rareskills.io/post/try-catch-solidity','web3','RareSkills','','The ways a call can fail, the error data each failure returns, and which failures try/catch can and cannot handle.'],
+ ['Introduction to proxies','https://rareskills.io/post/proxy-contract','web3','RareSkills','','How a proxy keeps storage in one contract and delegates logic to another, and how ERC-1967 slots prevent storage collisions.'],
+ ['Assembly revert','https://rareskills.io/post/assembly-revert','web3','RareSkills','','Rebuilding a Solidity revert in inline assembly with mstore and revert, and why that version costs less gas.'],
+ ['Solana Token-2022 and token extensions explained','https://rareskills.io/post/token-2022','web3','RareSkills','','How the backward-compatible Token-2022 program packs extensions into one program, and how each extension changes mint and token accounts.'],
+ ['Solana instruction introspection','https://rareskills.io/post/solana-instruction-introspection','web3','RareSkills','','How a Solana program reads the other instructions in its own transaction, and why signature checks depend on it.'],
+ ['Interest bearing token, part 1','https://rareskills.io/post/token-2022-interest-bearing-extension','web3','RareSkills','','How the Token-2022 interest-bearing extension stores a rate on the mint and derives the displayed balance from it.'],
+ ['Interest bearing token, part 2','https://rareskills.io/post/token-2022-interest-bearing-extension-part-2','web3','RareSkills','',''],
+ ['Switchboard oracle on Solana: How to read price feeds','https://rareskills.io/post/solana-switchboard-oracle','web3','RareSkills','','How a Solana program reads a Switchboard price feed.'],
+ ['Rust program to SBF compilation','https://rareskills.io/post/rust-sbpf-compilation','web3','RareSkills','','What happens between a Rust source file and the bytecode the Solana VM runs.'],
+ ['sBPF memory layout and register conventions','https://rareskills.io/post/solana-memory-layout','web3','RareSkills','','How the sBPF VM lays out program memory and which registers hold which values.'],
+ ['Reading Solana instruction inputs using sBPF assembly','https://rareskills.io/post/reading-solana-instruction-inputs-sbpf-assembly','web3','RareSkills','','Parsing the serialized instruction input by hand in sBPF assembly.'],
+ ['Solana syscalls: Logging in sBPF assembly','https://rareskills.io/post/solana-logging-syscalls-sbpf','web3','RareSkills','','How programs call runtime functions through syscalls, with arguments passed in registers.'],
+ ['Introduction to Ethereum Improvement Proposals (EIPs)','https://www.cyfrin.io/blog/introduction-to-ethereum-improvement-proposals-eips','web3','Cyfrin','2024-08-21','What EIPs are, how they are categorized, and the stages a proposal moves through.'],
+ ['EIP-191: Signed data standard','https://www.cyfrin.io/glossary/eip-191','web3','Cyfrin','','Glossary entry on the prefixed format that keeps signed off-chain messages from being replayed as transactions.'],
+ ['EIP-712: Typed structured data signing','https://www.cyfrin.io/glossary/eip-712','web3','Cyfrin','','Glossary entry on hashing and signing typed structured data so wallets can show users what they sign.'],
+ ['ERC-721: Non-fungible token standard','https://www.cyfrin.io/glossary/erc-721','web3','Cyfrin','','Glossary entry on the standard for creating, tracking and transferring unique tokens.'],
+ ['Error handling in Rust: A comprehensive tutorial',LR+'error-handling-rust/','rust','LogRocket','2024-07-18'],
+ ['Using Rust and Axum to build a JWT authentication API',LR+'using-rust-axum-build-jwt-authentication-api/','rust','LogRocket','2024-05-29'],
+ ['Migrating a JavaScript frontend to Leptos, a Rust framework',LR+'migrating-javascript-frontend-leptos-rust-framework/','rust','LogRocket','2024-03-19'],
+ ['Actix Web adoption guide: Overview, examples, and alternatives',LR+'actix-web-adoption-guide/','rust','LogRocket','2024-03-18'],
+ ['D3.js adoption guide: Overview, examples, and alternatives',LR+'d3-js-adoption-guide/','js','LogRocket','2024-01-19'],
+ ["Adding interactivity with GitHub's Hotkey library",LR+'adding-interactivity-githubs-hotkey-library/','js','LogRocket','2023-12-15'],
+ ['Using Rust and Leptos to build beautiful, declarative UIs',LR+'using-rust-leptos-build-beautiful-declarative-uis/','rust','LogRocket','2023-11-30'],
+ ['Using Dioxus with Rust to build performant single-page apps',LR+'using-dioxus-rust-build-single-page-apps/','rust','LogRocket','2023-11-10'],
+ ['5 automatic verification tools for Rust and when to use each',LR+'5-automatic-verification-tools-rust/','rust','LogRocket','2023-10-10'],
+ ['Leveraging Cody AI for better and more efficient code',LR+'leveraging-cody-ai-better-more-efficient-code/','other','LogRocket','2023-10-02'],
+ ['Leveraging Fern to define and document REST APIs',LR+'leveraging-fern-define-document-rest-apis/','other','LogRocket','2023-09-04'],
+ ['Using Kani to write and validate Rust code with ChatGPT',LR+'using-kani-write-validate-rust-code-chatgpt/','rust','LogRocket','2023-08-28'],
+ ['Building a Rust app with Perseus',LR+'building-rust-app-perseus/','rust','LogRocket','2023-06-28'],
+ ['How to create a web app in Rust with Rocket and Diesel',LR+'create-web-app-rust-rocket-diesel/','rust','LogRocket','2023-06-16'],
+ ['A guide to signal handling in Rust',LR+'guide-signal-handling-rust/','rust','LogRocket','2023-04-05'],
+ ['Disambiguating Rust traits: Copy, Clone, and Dynamic',LR+'disambiguating-rust-traits-copy-clone-dynamic/','rust','LogRocket','2023-03-23'],
+ ['A guide to visual debugging with Vitest Preview',LR+'visual-debugging-vitest-preview/','js','LogRocket','2023-01-16'],
+ ['Implementing a secure password reset in Node.js',LR+'implementing-secure-password-reset-node-js/','js','LogRocket','2023-01-06'],
+ ['Deploy your ecommerce store with the new Svelte Commerce',LR+'deploy-ecommerce-store-svelte-commerce/','js','LogRocket','2022-12-12'],
+ ['Editing GIFs in your Node.js project with canvas-gif',LR+'editing-gifs-node-js-project-canvas-gif/','js','LogRocket','2022-10-21'],
+ ["Using TypeORM's QueryBuilder in NestJS",LR+'using-typeorms-querybuilder-nestjs/','js','LogRocket','2022-09-22'],
+ ['Deploying Next.js with Flask',LR+'deploying-next-js-flask/','other','LogRocket','2022-08-11'],
+ ['Getting started with the Square Node.js SDK',LR+'getting-started-square-node-js-sdk/','js','LogRocket','2022-07-19'],
+ ['Comparing logging and tracing in Rust',LR+'comparing-logging-tracing-rust/','rust','LogRocket','2022-05-27'],
+ ['Comparing random number generators in Rust',LR+'comparing-random-number-generators-rust/','rust','LogRocket','2022-04-20'],
+ ['Svelte Native vs. React Native: A comparison guide',LR+'svelte-native-vs-react-native/','js','LogRocket','2022-02-11'],
+ ['Data visualization with D3.js and Node.js',LR+'data-visualization-d3-js-node-js/','js','LogRocket','2021-12-20'],
+ ['Creating Python REST APIs with Flask, Connexion, and SQLAlchemy',LR+'creating-python-rest-apis-flask-connexion-sqlalchemy/','other','LogRocket','2021-11-24'],
+ ['Theatre.js: Create intricate and powerful animations in JavaScript',LR+'theatre-js-creating-intricate-powerful-animations/','js','LogRocket','2021-11-03'],
+ ['Top 5 smart contract programming languages for blockchain',LR+'smart-contract-programming-languages/','web3','LogRocket','2021-10-21'],
+ ['Creating configuration files in Node.js using node-config',LR+'creating-configuration-files-node-js-using-node-config/','js','LogRocket','2021-09-27'],
+ ['Configuring any GraphQL server with Envelop',LR+'configuring-any-graphql-server-envelop/','js','LogRocket','2021-08-27'],
+ ['How to mitigate risk when your auth vendor gets acquired','https://fusionauth.io/blog/mitigate-acquisition-risks-auth-vendor-excerpt','other','FusionAuth','2021-06-22'],
+ ['Testing your React Native app with Appium',LR+'testing-your-react-native-app-with-appium/','js','LogRocket','2021-05-19'],
+ ['AdonisJs vs. Django: Which web framework should you use?',LR+'adonisjs-vs-django-which-web-framework-should-you-use/','other','LogRocket','2021-03-09'],
+ ['Send bitcoin from your wallet using JavaScript',LR+'sending-bitcoin-with-javascript/','web3','LogRocket','2021-02-26']
+].map(([t,u,k,v,d,s])=>({t,u,k,v,d,s}));
+
+const J=[
+ {org:'RareSkills',t:'Researcher and technical writer',s:'2024-04',e:'',where:'Remote · freelance, then full-time',b:[
+  'Builds a ZK and Rust learning platform for working engineers.',
+  'Explains low-level blockchain mechanics such as syscalls, storage, cross-contract calls and proxies, so developers form accurate mental models.',
+  'Tests every technical claim against real protocol behaviour before it ships.',
+  'Designs the diagrams and visual explanations for each article.',
+  'Works with senior engineers to find gaps in an explanation before readers do.']},
+ {org:'Cyfrin',t:'Technical writer',s:'2024-08',e:'2025-08',where:'Remote · freelance',b:[
+  'Wrote a glossary covering most Ethereum EIPs, with enough depth for engineers and enough clarity for newcomers.',
+  'Made Manim animations for engineering lessons.']},
+ {org:'Librium',t:'Software developer',s:'2021-03',e:'',where:'Remote',b:[
+  'Led the team that designed and built a P2P crypto payment gateway. African users trade crypto for fiat paid straight into their bank accounts, at over 2,000 transactions a day.',
+  'Built the bill payment system that lets users pay bills with crypto.',
+  'Designed and built the crypto-to-fiat swap, one of the most used features in the app.']},
+ {org:'Field Intelligence',t:'Software developer, contract',s:'2019-10',e:'2020-04',where:'Abuja',b:[
+  'Worked on ShelfLife, a drug management and inventory platform for pharmacies and healthcare providers.',
+  'Helped improve uptime and cut operational issues.',
+  'Found and fixed critical bugs before they could push customers away.']},
+ {org:'Helium Health',t:'Software engineer',s:'2019-01',e:'2019-12',where:'Abuja',b:[
+  'Managed the MedicPlus medical records application on site for several clients.',
+  'Wrote automation scripts that ran facility billing around the clock.',
+  'Designed a paediatric guidance app that tracks child growth in real time for physicians.']}
+];
+const SK={'sk-lang':['Rust','Actix Web','Rocket','Diesel','JavaScript','React','React Native','Node.js','Express','Python','Django','Flask'],
+ 'sk-chain':['Solidity','Solana','sBPF assembly','Token-2022','EVM internals','Ethereum EIPs','NEAR'],
+ 'sk-data':['PostgreSQL','SQL','MongoDB','REST API design'],
+ 'sk-write':['Long-form tutorials','Technical diagrams','Manim animation','Claim verification']};
+
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=d=>d?new Date(d+'T00:00:00').toLocaleDateString('en-GB',{month:'short',year:'numeric'}):'';
+const fm=m=>m?new Date(m+'-01T00:00:00').toLocaleDateString('en-GB',{month:'short',year:'numeric'}):'Present';
+const item=a=>`<li><a href="${esc(a.u)}"><h3>${esc(a.t)}</h3><span class="meta">${esc(a.v)}${a.d?' · '+fmt(a.d):''}</span>${a.s?`<p>${esc(a.s)}</p>`:''}</a></li>`;
+const pick=ts=>ts.map(t=>A.find(a=>a.t===t)).filter(Boolean);
+
+document.getElementById('jobs').innerHTML=J.map(j=>`<li class="job"><div class="when">${fm(j.s)} – ${fm(j.e)}<span>${esc(j.where)}</span></div><div><h3>${esc(j.t)} · <span class="org">${esc(j.org)}</span></h3><ul>${j.b.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></li>`).join('');
+for(const id in SK)document.getElementById(id).innerHTML=SK[id].map(x=>`<li>${esc(x)}</li>`).join('');
+document.getElementById('l-rs').innerHTML=A.filter(a=>a.v==='RareSkills'||a.v==='Cyfrin').map(item).join('');
+document.getElementById('l-rust').innerHTML=pick(['Error handling in Rust: A comprehensive tutorial','5 automatic verification tools for Rust and when to use each','Using Kani to write and validate Rust code with ChatGPT','Disambiguating Rust traits: Copy, Clone, and Dynamic','Using Rust and Axum to build a JWT authentication API','Migrating a JavaScript frontend to Leptos, a Rust framework','Comparing logging and tracing in Rust']).map(item).join('');
+document.getElementById('l-web').innerHTML=pick(['Implementing a secure password reset in Node.js','How to mitigate risk when your auth vendor gets acquired','Send bitcoin from your wallet using JavaScript','Top 5 smart contract programming languages for blockchain','Creating Python REST APIs with Flask, Connexion, and SQLAlchemy','D3.js adoption guide: Overview, examples, and alternatives']).map(item).join('');
+document.getElementById('legend').innerHTML=`<span><i style="background:#ff8fa3;border-radius:2px;width:18px;height:6px"></i>Role</span>`+Object.values(T).map(([n,c])=>`<span><i style="background:${c}"></i>${esc(n)} article</span>`).join('');
+
+/* career chart */
+const svg=document.getElementById('tls'),box=document.getElementById('tl');
+const dated=A.filter(a=>a.d),keys=['rust','js','web3','other'];
+const t0=Date.UTC(2019,0,1),t1=Date.UTC(2027,0,1),now=new Date().toISOString().slice(0,10);
+const roles=[...J].reverse();
+const draw=()=>{
+  const W=box.clientWidth,H=box.clientHeight,narrow=W<560;
+  const L=narrow?6:150,R=10,top=8,bot=30,gap=18;
+  const rr=(H-top-bot-gap)*0.48/roles.length, ar=(H-top-bot-gap)*0.52/keys.length;
+  const x=d=>L+(Date.parse(d+'T00:00:00Z')-t0)/(t1-t0)*(W-L-R);
+  let s='';
+  for(let y=2019;y<=2027;y++){const xx=L+(Date.UTC(y,0,1)-t0)/(t1-t0)*(W-L-R);
+    s+=`<line x1="${xx}" x2="${xx}" y1="${top}" y2="${H-bot+6}" stroke="#3a2a42"/>`;
+    if(y<2027&&(!narrow||y%2))s+=`<text x="${xx+5}" y="${H-9}" fill="#b9aec4" font-size="13">${narrow?"'"+String(y).slice(2):y}</text>`;}
+  roles.forEach((j,i)=>{const cy=top+rr*i+rr*0.62,x1=x(j.s+'-01'),x2=x(j.e?j.e+'-28':now),bh=Math.max(8,Math.min(14,rr*0.32));
+    s+=`<rect class="bar" x="${x1}" y="${cy-bh/2}" width="${Math.max(4,x2-x1)}" height="${bh}" rx="${bh/2}" fill="#ff8fa3" opacity="${j.e?0.55:1}" style="animation-delay:${i*80}ms"><title>${esc(j.org)}: ${fm(j.s)} to ${fm(j.e)}</title></rect>`;
+    const lx=Math.min(x1,W-R-110);
+    s+=`<text x="${lx}" y="${cy-bh/2-5}" fill="#ffffff" font-size="13">${esc(j.org)}</text>`;});
+  const at=top+rr*roles.length+gap;
+  s+=`<line x1="${L}" x2="${W-R}" y1="${at-gap/2}" y2="${at-gap/2}" stroke="#8f7aa8" stroke-opacity=".5"/>`;
+  if(!narrow)s+=`<text x="0" y="${top+14}" fill="#8f7aa8" font-size="13">Roles</text>`;
+  keys.forEach((k,i)=>{const cy=at+ar*i+ar/2;
+    s+=`<line x1="${L}" x2="${W-R}" y1="${cy}" y2="${cy}" stroke="#3a2a42" stroke-dasharray="2 5"/>`;
+    if(!narrow)s+=`<text x="0" y="${cy+5}" fill="#b9aec4" font-size="14">${esc(T[k][0])}</text>`;
+    dated.filter(a=>a.k===k).forEach((a,j)=>{const jit=((j%3)-1)*Math.min(7,ar/5);
+      s+=`<a href="${esc(a.u)}"><circle class="pt" cx="${x(a.d)}" cy="${cy+jit}" r="${narrow?4.5:6}" fill="${T[k][1]}" style="animation-delay:${j*30}ms"><title>${esc(a.t)} (${fmt(a.d)})</title></circle></a>`;});
+  });
+  svg.innerHTML=s;
+};
+const ro=new ResizeObserver(draw);ro.observe(box);
+
+/* archive */
+let cur='all';
+const chips=document.getElementById('chips'),q=document.getElementById('q'),rows=document.getElementById('rows'),empty=document.getElementById('empty');
+chips.innerHTML=[['all','All ('+A.length+')'],...keys.map(k=>[k,T[k][0]])].map(([k,n])=>`<button class="chip" data-k="${k}" aria-pressed="${k==='all'}">${esc(n)}</button>`).join('');
+const render=()=>{
+  const term=q.value.trim().toLowerCase();
+  const list=A.filter(a=>(cur==='all'||a.k===cur)&&a.t.toLowerCase().includes(term));
+  rows.innerHTML=list.map(a=>`<tr><td><a href="${esc(a.u)}">${esc(a.t)}</a></td><td><span class="dot" style="background:${T[a.k][1]}"></span>${esc(T[a.k][0])}</td><td>${esc(a.v)}</td><td class="d">${a.d?fmt(a.d):'Undated'}</td></tr>`).join('');
+  empty.hidden=list.length>0;
+};
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cur=b.dataset.k;
+  for(const c of chips.children)c.setAttribute('aria-pressed',c===b);render();});
+q.addEventListener('input',render);
+render();
+
+const cp=document.getElementById('copy');
+cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('mailstoeze@gmail.com');cp.textContent='Copied'}catch(e){cp.textContent='Select the address to copy'}setTimeout(()=>cp.textContent='Copy email',2000)});
+}
+</script>
+</body>
+</html>
